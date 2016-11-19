@@ -9,11 +9,11 @@ $events = json_decode($content, true);
 
 $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:Sl341jGF275OLqY';
-echo $events;
+
+$replytext = "";
 
 if (!is_null($events['events'])) {
 
-	echo "event___";
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
@@ -23,10 +23,17 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
+
+			if ($text == "v1") $replytext = "v1out_test";
+			elseif ($text == "v2") $replytext = "v2in_out test";
+			elseif ($text == "v3") $replytext = "v3 test";
+			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
+			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
+			else $replytext = $text;
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $replytext
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
