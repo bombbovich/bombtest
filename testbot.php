@@ -7,6 +7,8 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
+
+	echo "event___";
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
@@ -46,4 +48,3 @@ if (!is_null($events['events'])) {
 }
 echo "OK";
 
-?>
