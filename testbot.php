@@ -6,6 +6,8 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
+echo $events;
+
 if (!is_null($events['events'])) {
 
 	echo "event___";
@@ -48,3 +50,4 @@ if (!is_null($events['events'])) {
 }
 echo "OK";
 
+?>
