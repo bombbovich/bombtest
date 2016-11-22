@@ -19,12 +19,22 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'af688c7740b64fc4b521e
 //$response = $bot->pushMessage('<reply token>', $textMessageBuilder);
 
 //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-$response = $bot->replyText('<reply token>', 'hello!');
+//$response = $bot->replyText('<reply token>', 'hello!');
 //$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 //$response = $bot->pushMessage('test', $textMessageBuilder);
 //$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 //$response = $bot->pushMessage('exiDaajjk;ljasid', $textMessageBuilder);
 //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีครับ FEES ทุกท่าน');
+$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+if ($response->isSucceeded()) {
+    echo 'Succeeded!';
+    return;
+}
+
+// Failed
+echo $response->getHTTPStatus . ' ' . $response->getRawBody();
 
 echo "test line";
 ?>
