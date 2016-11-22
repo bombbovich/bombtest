@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 
 require "/vendor/test2.php";
 
-echo "ทดสอบ"ว
+echo "ทดสอบ";
 echo "/n/r";
 echo "include";
 
