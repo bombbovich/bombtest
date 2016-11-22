@@ -1,65 +1,40 @@
 <?php
-$access_token = 'mTZICvfS9VFn9Y8SIZv1c2YEf8eqN1Ik9CNU+nYqN2J9G0K1F4cCFnf9MIMbs51Ib/zDCoAzwHgEWBWEJfDjDToHS7vu9KTnGuxeT/2yJHOt8vJfcVrN8naBXP9zm72ZuUH7bPFXSYaIbbMFDkO/RAdB04t89/1O/w1cDnyilFU=';
 
-// Get POST body content
-$content = file_get_contents('php://input');
-// Parse JSON
-$events = json_decode($content, true);
-// Validate parsed JSON data
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
-$proxy = 'velodrome.usefixie.com:80';
-$proxyauth = 'fixie:Sl341jGF275OLqY';
+require_once "vendor/autoload.php";
 
-$replytext = "";
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('TNPzAFWAD9VBJjejExPpEjn00xmsDbOwuWrG8/QU0Rw+iAt0NvokuUlrNLYXrVcmb/zDCoAzwHgEWBWEJfDjDToHS7vu9KTnGuxeT/2yJHPKRO/1fy0RZjq3P4OBnegQ4vs9I/ztLSCa6ws/3ytFMwdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'af688c7740b64fc4b521e78644f79a55']);
 
-if (!is_null($events['events'])) {
+//$response = $bot->getProfile('bombbovich');
+//if ($response->isSucceeded()) {
+//    $profile = $response->getJSONDecodedBody();
+//    echo $profile['displayName'];
+//   echo $profile['pictureUrl'];
+//    echo $profile['statusMessage'];
+//}
+//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+//$response = $bot->pushMessage('<reply token>', $textMessageBuilder);
 
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			$text = $event['message']['text'];
-			// Get replyToken
-			$replyToken = $event['replyToken'];
+//echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+//$response = $bot->replyText('<reply token>', 'hello!');
+//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+//$response = $bot->pushMessage('test', $textMessageBuilder);
+//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+//$response = $bot->pushMessage('exiDaajjk;ljasid', $textMessageBuilder);
+//echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
-
-			if ($text == "v1") $replytext = "v1out_test";
-			elseif ($text == "v2") $replytext = "v2in_out test";
-			elseif ($text == "v3") $replytext = "v3 test";
-			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
-			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
-			else $replytext = $text;
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $replytext
-			];
-
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_PROXY, $proxy);
-			curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
-
-			echo $result . "\r\n";
-		}
-	}
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีครับ FEES ทุกท่าน');
+$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+if ($response->isSucceeded()) {
+    echo 'Succeeded!';
+    return;
 }
-echo "OK";
 
+// Failed
+echo $response->getHTTPStatus . ' ' . $response->getRawBody();
+
+echo "test line";
 ?>
