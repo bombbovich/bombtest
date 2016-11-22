@@ -10,7 +10,7 @@ echo "bombbovich";
 
 function testtext2(){
 
-	echo "bomb2"
+	echo "bomb2";
 }
 
 ?>
