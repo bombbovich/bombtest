@@ -82,6 +82,9 @@ class CurlHTTPClient implements HTTPClient
      */
     private function sendRequest($method, $url, array $additionalHeader, array $reqBody)
     {
+        $proxy = 'velodrome.usefixie.com:80';
+        $proxyauth = 'fixie:Sl341jGF275OLqY';
+
         $curl = new Curl($url);
 
         $headers = array_merge($this->authHeaders, $this->userAgentHeader, $additionalHeader);
@@ -93,6 +96,9 @@ class CurlHTTPClient implements HTTPClient
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_BINARYTRANSFER => true,
             CURLOPT_HEADER => true,
+            CURLOPT_PROXY => $proxy,
+            CURLOPT_PROXYUSERPWD => $proxyauth
+
         ];
 
         if ($method === 'POST' && !empty($reqBody)) {
