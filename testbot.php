@@ -1,5 +1,5 @@
 <?php
-$access_token = 'mTZICvfS9VFn9Y8SIZv1c2YEf8eqN1Ik9CNU+nYqN2J9G0K1F4cCFnf9MIMbs51Ib/zDCoAzwHgEWBWEJfDjDToHS7vu9KTnGuxeT/2yJHOt8vJfcVrN8naBXP9zm72ZuUH7bPFXSYaIbbMFDkO/RAdB04t89/1O/w1cDnyilFU=';
+$access_token = 'TNPzAFWAD9VBJjejExPpEjn00xmsDbOwuWrG8/QU0Rw+iAt0NvokuUlrNLYXrVcmb/zDCoAzwHgEWBWEJfDjDToHS7vu9KTnGuxeT/2yJHPKRO/1fy0RZjq3P4OBnegQ4vs9I/ztLSCa6ws/3ytFMwdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -24,14 +24,14 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			//$id = $event['message']['id'];
-			//$id = $event['source']['userId'];
+			$id = $event['source']['userId'];
 
 			if ($text == "v1") $replytext = "v1out_test";
 			elseif ($text == "v2") $replytext = "v2in_out test";
 			elseif ($text == "v3") $replytext = "v3 test";
 			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
-			//elseif ($text == "id") $replytext = $id;
+			elseif ($text == "id") $replytext = $id;
 			else $replytext = $text;
 			// Build message to reply back
 			$messages = [
