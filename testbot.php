@@ -24,14 +24,14 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			//$id = $event['message']['id'];
-			$id = $event['source']['userId'];
+			//$id = $event['source']['userId'];
 
 			if ($text == "v1") $replytext = "v1out_test";
 			elseif ($text == "v2") $replytext = "v2in_out test";
 			elseif ($text == "v3") $replytext = "v3 test";
 			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
-			elseif ($text == "id") $replytext = $id;
+			//elseif ($text == "id") $replytext = $id;
 			else $replytext = $text;
 			// Build message to reply back
 			$messages = [
