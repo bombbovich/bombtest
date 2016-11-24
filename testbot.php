@@ -27,7 +27,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'af688c7740b64fc4b521e
 //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีครับ FEES ทุกท่าน');
-$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+$response = $bot->replyMessage($event->getReplyToken(), $textMessageBuilder);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
