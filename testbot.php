@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 			//elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			//elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
 			//elseif ($text == "id") $replytext = $id;
-			elseif ($text == "facstatus"){
+			elseif ($text == "facstatussep"){
 				
 				$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
 				$resultsql = $conn->query($sql);
@@ -87,9 +87,48 @@ if (!is_null($events['events'])) {
 
 				//$replytext = $textread1;
 			}
+			elseif ($text == "facstatus"){
+				
+				$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread1 = "FACILITIES STATUS \r\nเวลา: " . $row["time_p"]. " \r\nN2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar \r\nPCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
+    				}
+				} else {
+    				echo "0 results";
+				}
+
+				$sql = "SELECT * FROM fac_temp ORDER by time_t DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread2 = "\r\nPCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
+    				}
+				} else {
+    				echo "0 results";
+				}
+
+				$sql = "SELECT * FROM fac_th ORDER by time_th DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread3 = "\r\nTemp Class 100: " . $row["temp_100"]. " 'C\r\nHumidity Class 100: " . $row["humid_100"]. " %RH \r\nTemp Class 10K: " . $row["temp_10k"]. " 'C\r\nHumidity Class 10k: " . $row["humid_10k"]. " %RH";
+    				}
+				} else {
+    				echo "0 results";
+				}
+				$replytext = $textread1+$textread2+$textread3;
+			}
 			//else $replytext = $text;
 			// Build message to reply back		
-			if ($text == "facstatus"){
+			if ($text == "facstatussep"){
 				$messages1 = [
 					'type' => 'text',
 					'text' => $textread1
