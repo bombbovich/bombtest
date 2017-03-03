@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
 				if ($resultsql->num_rows > 0) {
     			// output data of each row
     				while($row = $resultsql->fetch_assoc()) {
-        				$textread1 = "FACILITIES PRESSURE Measure <CR> เวลา: " . $row["time_p"]. " <CR>N2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar <CR> PCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
+        				$textread1 = "FACILITIES PRESSURE Measure <br> เวลา: " . $row["time_p"]. " <br>N2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar <br> PCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
     				}
 				} else {
     				echo "0 results";
@@ -66,7 +66,7 @@ if (!is_null($events['events'])) {
 				if ($resultsql->num_rows > 0) {
     			// output data of each row
     				while($row = $resultsql->fetch_assoc()) {
-        				$textread2 = "FACILITIES Temperature Measure <CR> เวลา: " . $row["time_t"]. "<CR> PCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
+        				$textread2 = "FACILITIES Temperature Measure <br> เวลา: " . $row["time_t"]. "<br> PCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
     				}
 				} else {
     				echo "0 results";
@@ -78,7 +78,7 @@ if (!is_null($events['events'])) {
 				if ($resultsql->num_rows > 0) {
     			// output data of each row
     				while($row = $resultsql->fetch_assoc()) {
-        				$textread3 = "FACILITIES CR Environment Measure <CR> เวลา: " . $row["time_th"]. " <CR>Temp Class 100: " . $row["temp_100"]. " 'C, Humidity Class 100: " . $row["humid_100"]. " %RH <CR> Temp Class 10K: " . $row["temp_10k"]. " 'C, Humidity Class 10k: " . $row["humid_10k"]. " %RH";
+        				$textread3 = "FACILITIES CR Environment Measure <br> เวลา: " . $row["time_th"]. " <br>Temp Class 100: " . $row["temp_100"]. " 'C, Humidity Class 100: " . $row["humid_100"]. " %RH <br> Temp Class 10K: " . $row["temp_10k"]. " 'C, Humidity Class 10k: " . $row["humid_10k"]. " %RH";
     				}
 				} else {
     				echo "0 results";
