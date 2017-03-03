@@ -15,9 +15,10 @@ $replytext = "";
 $servername = "203.185.96.48";
 $username = "fees";
 $password = "tmecfees01";
+$dbname = "fees";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -45,6 +46,21 @@ if (!is_null($events['events'])) {
 			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
 			elseif ($text == "id") $replytext = $id;
+			elseif ($text == "facdata"){
+				
+				$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread = "time: " . $row["time_p"]. " -> N2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. "bar, PCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. "bar";
+    				}
+				} else {
+    				echo "0 results";
+				}
+				$replytext = $textread;
+			}
 			else $replytext = $text;
 			// Build message to reply back
 			$messages = [
