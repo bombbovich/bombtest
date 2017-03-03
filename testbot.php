@@ -40,13 +40,13 @@ if (!is_null($events['events'])) {
 			//$id = $event['message']['id'];
 			$id = $event['source']['userId'];
 
-			if ($text == "v1") $replytext = "v1out_test";
-			elseif ($text == "v2") $replytext = "v2in_out test";
-			elseif ($text == "v3") $replytext = "v3 test";
-			elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
-			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
-			elseif ($text == "id") $replytext = $id;
-			elseif ($text == "facdata"){
+			if ($text == "test") $replytext = "fees line bot test";
+			//elseif ($text == "v2") $replytext = "v2in_out test";
+			//elseif ($text == "v3") $replytext = "v3 test";
+			//elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
+			//elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
+			//elseif ($text == "id") $replytext = $id;
+			elseif ($text == "facstatus"){
 				
 				$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
 				$resultsql = $conn->query($sql);
@@ -54,26 +54,80 @@ if (!is_null($events['events'])) {
 				if ($resultsql->num_rows > 0) {
     			// output data of each row
     				while($row = $resultsql->fetch_assoc()) {
-        				$textread = "time: " . $row["time_p"]. " -> N2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. "bar, PCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. "bar";
+        				$textread1 = "FACILITIES PRESSURE Measure <CR> เวลา: " . $row["time_p"]. " <CR>N2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar <CR> PCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
     				}
 				} else {
     				echo "0 results";
 				}
-				$replytext = $textread;
+
+				$sql = "SELECT * FROM fac_temp ORDER by time_t DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread2 = "FACILITIES Temperature Measure <CR> เวลา: " . $row["time_t"]. "<CR> PCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
+    				}
+				} else {
+    				echo "0 results";
+				}
+
+				$sql = "SELECT * FROM fac_th ORDER by time_th DESC LIMIT 1";
+				$resultsql = $conn->query($sql);
+
+				if ($resultsql->num_rows > 0) {
+    			// output data of each row
+    				while($row = $resultsql->fetch_assoc()) {
+        				$textread3 = "FACILITIES CR Environment Measure <CR> เวลา: " . $row["time_th"]. " <CR>Temp Class 100: " . $row["temp_100"]. " 'C, Humidity Class 100: " . $row["humid_100"]. " %RH <CR> Temp Class 10K: " . $row["temp_10k"]. " 'C, Humidity Class 10k: " . $row["humid_10k"]. " %RH";
+    				}
+				} else {
+    				echo "0 results";
+				}
+
+
+				//$replytext = $textread1;
 			}
-			else $replytext = $text;
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $replytext
-			];
+			//else $replytext = $text;
+			// Build message to reply back		
+			if ($text == "facstatus"){
+				$messages1 = [
+					'type' => 'text',
+					'text' => $textread1
+				];
+				$messages2 = [
+					'type' => 'text',
+					'text' => $textread2
+				];
+				$messages3 = [
+					'type' => 'text',
+					'text' => $textread3
+				];
+
+			}
+			else{
+				$messages = [
+					'type' => 'text',
+					'text' => $replytext
+				];
+			}
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
+
+			if ($text =="facstatus"){
+				$data = [
+					'replyToken' => $replyToken,
+					'messages' => [$messages1,$messages2,$messages3],
+				];
+			}
+			else {
+				$data = [
+					'replyToken' => $replyToken,
+					'messages' => [$messages],
+				];
+			}
+
+
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
