@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 			//elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			//elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
 			//elseif ($text == "id") $replytext = $id;
-			elseif ($text == "facstatussep"){
+			elseif ($text == "facstatus"){
 				
 				$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
 				$resultsql = $conn->query($sql);
