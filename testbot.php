@@ -12,6 +12,19 @@ $proxyauth = 'fixie:Sl341jGF275OLqY';
 
 $replytext = "";
 
+$servername = "203.185.96.48";
+$username = "fees";
+$password = "tmecfees01";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
+
 if (!is_null($events['events'])) {
 
 	// Loop through each event
