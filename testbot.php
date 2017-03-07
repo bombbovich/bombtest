@@ -38,9 +38,9 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			//$id = $event['message']['id'];
-			if ($event['source']['userId'] == "")
-				$id = $event['source']['groupId'];
-			else
+			//if ($event['source']['userId'] == "")
+			//	$id = $event['source']['groupId'];
+			//else
 				$id = $event['source']['userId'];
 
 			if ($text == "test") $replytext = "fees line bot test";
