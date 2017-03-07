@@ -38,7 +38,10 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			//$id = $event['message']['id'];
-			$id = $event['source']['userId'];
+			if ($event['source']['userId'] == "")
+				$id = $event['source']['groupId'];
+			else
+				$id = $event['source']['userId'];
 
 			if ($text == "test") $replytext = "fees line bot test";
 			//elseif ($text == "v2") $replytext = "v2in_out test";
