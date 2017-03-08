@@ -37,11 +37,47 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			//$id = $event['message']['id'];
-			//if ($event['source']['userId'] == "")
-			//	$id = $event['source']['groupId'];
-			//else
+			$id = $event['message']['id'];
+			if ($event['source']['userId'] == "")
+			{	if ($event['source']['roomId'] == "")
+				{
+					$id = $event['source']['groupId'];
+
+					$sql = "SELECT * FROM line_bot WHERE lineid = $id";
+					$resultsql = $conn->query($sql);
+					if ($resultsql == "")
+					{	
+						$sql = "INSERT INTO line_bot (lineid, type) VALUES (".$id.", 2)";
+						$resultsql = $conn->query($sql);			
+					}
+
+				}
+				else
+				{
+					$id = $event['source']['roomId'];
+
+					$sql = "SELECT * FROM line_bot WHERE lineid = $id";
+					$resultsql = $conn->query($sql);
+					if ($resultsql == "")
+					{	
+						$sql = "INSERT INTO line_bot (lineid, type) VALUES (".$id.", 1)";
+						$resultsql = $conn->query($sql);			
+					}
+				}
+			}
+			else
+			{
 				$id = $event['source']['userId'];
+
+				$sql = "SELECT * FROM line_bot WHERE lineid = $id";
+				$resultsql = $conn->query($sql);
+				if ($resultsql == "")
+				{	
+					$sql = "INSERT INTO line_bot (lineid, type) VALUES (".$id.", 0)";
+					$resultsql = $conn->query($sql);			
+				}
+			}	
+			//	$id = $event['source']['userId'];
 
 			if ($text == "test") $replytext = "fees line bot test";
 			//elseif ($text == "v2") $replytext = "v2in_out test";
