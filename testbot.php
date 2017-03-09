@@ -71,12 +71,13 @@ if (!is_null($events['events'])) {
 
 				$sql = "SELECT * FROM line_bot WHERE lineid like '$id'";
 				$resultsql = $conn->query($sql);
-				$test = $resultsql;
-				if ($resultsql == "")
+				if ($resultsql->num_rows == 0)
 				{	
 					$sql = "INSERT INTO line_bot (lineid, type) VALUES ('$id', 0)";
 					$resultsql = $conn->query($sql);			
 				}
+				else 
+					$test = "U registered";
 			}	
 			//	$id = $event['source']['userId'];
 
