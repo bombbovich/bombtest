@@ -43,39 +43,39 @@ if (!is_null($events['events'])) {
 				{
 					$id = $event['source']['groupId'];
 
-					$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
-					$resultsql = $conn->query($sql);
-					if ($resultsql == "")
-					{	
+					//$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
+					//$resultsql = $conn->query($sql);
+					//if ($resultsql == "")
+					//{	
 						$sql = "INSERT INTO line_bot (lineid, type) VALUES ('$id', 2)";
 						$resultsql = $conn->query($sql);			
-					}
+					//}
 
 				}
 				else
 				{
 					$id = $event['source']['roomId'];
 
-					$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
-					$resultsql = $conn->query($sql);
-					if ($resultsql == "")
-					{	
+					//$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
+					//$resultsql = $conn->query($sql);
+					//if ($resultsql == "")
+					//{	
 						$sql = "INSERT INTO line_bot (lineid, type) VALUES ('$id', 1)";
 						$resultsql = $conn->query($sql);			
-					}
+					//}
 				}
 			}
 			else
 			{
 				$id = $event['source']['userId'];
 
-				$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
-				$resultsql = $conn->query($sql);
-				if ($resultsql == "")
-				{	
+				//$sql = "SELECT * FROM line_bot WHERE lineid = '$id'";
+				//$resultsql = $conn->query($sql);
+				//if ($resultsql == "")
+				//{	
 					$sql = "INSERT INTO line_bot (lineid, type) VALUES ('$id', 0)";
 					$resultsql = $conn->query($sql);			
-				}
+				//}
 			}	
 			//	$id = $event['source']['userId'];
 
