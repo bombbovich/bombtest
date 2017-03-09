@@ -6,20 +6,46 @@ $access_token = 'TNPzAFWAD9VBJjejExPpEjn00xmsDbOwuWrG8/QU0Rw+iAt0NvokuUlrNLYXrVc
 $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:Sl341jGF275OLqY';
 //http://fixie:Sl341jGF275OLqY@velodrome.usefixie.com:80
+$servername = "203.185.96.48";
+$username = "fees";
+$password = "tmecfees01";
+$dbname = "fees";
 
-$url = 'https://api.line.me/v2/profile';
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-$headers = array('Authorization: Bearer ' . $access_token);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_PROXY, $proxy);
-curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-$result = curl_exec($ch);
-curl_close($ch);
+$sql = "SELECT * FROM line_bot WHERE lineid like '$id'";
+$resultsql = $conn->query($sql);
+if ($resultsql->num_rows > 0)
+{	
+	while($row = $resultsql->fetch_assoc()) {
+    	$textread1 = "UserId = ".$row['lineid']." and Status is ".$row['status']. " :end ";
 
-echo $result;
+    	$url = 'https://api.line.me/v2/profile/' + $row['lineid'];
+
+		$headers = array('Authorization: Bearer ' . $access_token);
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		$result = curl_exec($ch);
+		curl_close($ch);
+
+		echo $result;
+    }
+    echo $textread1;
+}
+
+
+
 
 ?>
