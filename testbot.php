@@ -71,6 +71,7 @@ if (!is_null($events['events'])) {
 
 				$sql = "SELECT * FROM line_bot WHERE lineid like '$id'";
 				$resultsql = $conn->query($sql);
+				$test = $resultsql;
 				if ($resultsql == "")
 				{	
 					$sql = "INSERT INTO line_bot (lineid, type) VALUES ('$id', 0)";
@@ -80,7 +81,7 @@ if (!is_null($events['events'])) {
 			//	$id = $event['source']['userId'];
 
 			if ($text == "test") $replytext = "fees line bot test";
-			//elseif ($text == "v2") $replytext = "v2in_out test";
+			elseif ($text == "sql") $replytext = $test;
 			//elseif ($text == "v3") $replytext = "v3 test";
 			//elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
 			//elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
