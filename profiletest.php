@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully";
 
-$sql = "SELECT * FROM line_bot WHERE lineid like '$id'";
+$sql = "SELECT * FROM line_bot WHERE lineid";
 $resultsql = $conn->query($sql);
 if ($resultsql->num_rows > 0)
 {	
