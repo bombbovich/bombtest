@@ -10,6 +10,8 @@ $events = json_decode($content, true);
 $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:Sl341jGF275OLqY';
 
+print_r($_GET);
+
 $replytext = "";
 
 $replytext = "Push for test ^^";
@@ -19,8 +21,8 @@ $messages = [
 	'text' => $replytext
 ];
 
-			//$id = 'U924d3eaf86d1bc9e757633949f9ba23e';//bombbovich
-$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//
+$id = 'U924d3eaf86d1bc9e757633949f9ba23e';//bombbovich
+//$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//FEES Together
 
 $url = 'https://api.line.me/v2/bot/message/push';
 $data2 = [
