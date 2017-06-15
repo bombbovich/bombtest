@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully";
 
-$sql = "SELECT * FROM line_bot WHERE lineid";
+$sql = "SELECT * FROM line_bot";
 $resultsql = $conn->query($sql);
 echo $resultsql->num_rows;
 if ($resultsql->num_rows > 0)
