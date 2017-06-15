@@ -22,8 +22,9 @@ echo "Connected successfully";
 
 $sql = "SELECT * FROM line_bot WHERE lineid";
 $resultsql = $conn->query($sql);
+echo $resultsql->num_rows;
 if ($resultsql->num_rows > 0)
-{	
+{	echo "inloop";
 	while($row = $resultsql->fetch_assoc()) {
     	$textread1 = "UserId = ".$row['lineid']." and Status is ".$row['status']. " :end ";
 
