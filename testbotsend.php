@@ -14,34 +14,33 @@ $replytext = "";
 
 $replytext = "Push for test ^^";
 
-			$messages = [
-				'type' => 'text',
-				'text' => $replytext
-			];
+$messages = [
+	'type' => 'text',
+	'text' => $replytext
+];
 
-			$id = 'U924d3eaf86d1bc9e757633949f9ba23e';
+			//$id = 'U924d3eaf86d1bc9e757633949f9ba23e';//bombbovich
+$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//
 
-			$url = 'https://api.line.me/v2/bot/message/push';
-			$data2 = [
-				'to' => $id,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data2);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+$url = 'https://api.line.me/v2/bot/message/push';
+$data2 = [
+	'to' => $id,
+	'messages' => [$messages],
+];
+$post = json_encode($data2);
+$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_PROXY, $proxy);
-			curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_PROXY, $proxy);
+curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch);
+curl_close($ch);
 
-			echo $result . "\r\n";
-echo "OK xx push";
-echo $result;
+echo $result . "\r\n";
 
 ?>
