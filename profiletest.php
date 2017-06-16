@@ -10,7 +10,7 @@ $servername = "203.185.96.48";
 $username = "fees";
 $password = "tmecfees01";
 $dbname = "fees";
-/*
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -28,7 +28,7 @@ if ($resultsql->num_rows > 0)
 	while($row = $resultsql->fetch_assoc()) {
     	$textread1 = "UserId = ".$row['lineid']." and Status is ".$row['status']. " :end ";
 
-    	$url = 'https://api.line.me/v2/profile/' + $row['lineid'];
+    	$url = 'https://api.line.me/v2/profile/' . $row['lineid'];
 
 		$headers = array('Authorization: Bearer ' . $access_token);
 
@@ -45,27 +45,6 @@ if ($resultsql->num_rows > 0)
     }
     echo $textread1;
 }
-*/
-$id = 'U924d3eaf86d1bc9e757633949f9ba23e';
 
-$url = 'https://api.line.me/v2/bot/profile/' . $id;
-
-echo $url;
-
-		$headers = array('Authorization: Bearer ' . $access_token);
-
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_PROXY, $proxy);
-		curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		$result = curl_exec($ch);
-		curl_close($ch);
-
-		echo $result;
-
-
-echo "TEst pass";
 
 ?>
