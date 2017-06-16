@@ -66,4 +66,6 @@ echo $url;
 		echo $result;
 
 
+echo "TEst pass";
+
 ?>
