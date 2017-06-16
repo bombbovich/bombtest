@@ -28,7 +28,7 @@ if ($resultsql->num_rows > 0)
 	while($row = $resultsql->fetch_assoc()) {
     	$textread1 = "UserId = ".$row['lineid']." and Status is ".$row['status']. " :end ";
 
-    	$url = 'https://api.line.me/v2/profile/' . $row['lineid'];
+    	$url = 'https://api.line.me/v2/bot/profile/' . $row['lineid'];
 
 	echo $url;
 		
