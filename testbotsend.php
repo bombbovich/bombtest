@@ -46,6 +46,8 @@ if (isset($_GET)){
 	$id = 'U924d3eaf86d1bc9e757633949f9ba23e';//bombbovich
 	//$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//FEES Together
 	linesend($id,$replytext);
+	$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//FEES Together
+	linesend($id,$replytext);
 }
 
 echo "Test Bot Send";
