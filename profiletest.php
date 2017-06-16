@@ -48,7 +48,7 @@ if ($resultsql->num_rows > 0)
 */
 $id = 'U924d3eaf86d1bc9e757633949f9ba23e';
 
-$url = 'https://api.line.me/v2/profile/' + $id;
+$url = 'https://api.line.me/v2/bot/profile/' + $id;
 
 		$headers = array('Authorization: Bearer ' . $access_token);
 
