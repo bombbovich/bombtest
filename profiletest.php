@@ -30,6 +30,8 @@ if ($resultsql->num_rows > 0)
 
     	$url = 'https://api.line.me/v2/profile/' . $row['lineid'];
 
+	echo $url;
+		
 		$headers = array('Authorization: Bearer ' . $access_token);
 
 		$ch = curl_init($url);
