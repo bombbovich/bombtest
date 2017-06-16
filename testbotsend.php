@@ -14,6 +14,8 @@ print_r($_GET);
 
 $replytext = "";
 
+date_default_timezone_set('Asia/Bangkok');
+
 $now = new DateTime();
 //echo $now->format('Y-m-d H:i:s');    // MySQL datetime format
 $texttime = $now->format('Y-m-d H:i:s');
