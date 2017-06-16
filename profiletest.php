@@ -50,6 +50,8 @@ $id = 'U924d3eaf86d1bc9e757633949f9ba23e';
 
 $url = 'https://api.line.me/v2/bot/profile/' + $id;
 
+echo $url;
+
 		$headers = array('Authorization: Bearer ' . $access_token);
 
 		$ch = curl_init($url);
