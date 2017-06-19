@@ -35,6 +35,8 @@ if (isset($_GET)){
 			case 10:$replytext = " Alarm PCL HIGH Temperature, PCH Temp = ";break;
 			case 11:$replytext = " Alarm PCH LOW Temperature, PCL Temp = ";break;
 			case 12:$replytext = " Alarm PCH HIGH Temperature, PCL Temp = ";break;
+			case 13:$replytext = " UPS Cleanroom Source Status change to > ";break;
+			case 14:$replytext = " UPS Utilities Source Status change to > ";break;
 		}
 	}
 	if (isset($_GET['data'])){
