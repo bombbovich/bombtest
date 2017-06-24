@@ -27,14 +27,14 @@ if (isset($_GET)){
 			case 2:$replytext = " Alarm CDA HIGH Pressure, cda pressure = ";break;
 			case 3:$replytext = " Alarm N2 LOW Pressure, N2 pressure = ";break;
 			case 4:$replytext = " Alarm N2 HIGH Pressure, N2 pressure = ";break;
-			case 5:$replytext = " Alarm PCL LOW Pressure, PCH pressure = ";break;
-			case 6:$replytext = " Alarm PCL HIGH Pressure, PCH pressure = ";break;
-			case 7:$replytext = " Alarm PCH LOW Pressure, PCL pressure = ";break;
-			case 8:$replytext = " Alarm PCH HIGH Pressure, PCL pressure = ";break;
-			case 9:$replytext = " Alarm PCL LOW Temperature, PCH Temp = ";break;
-			case 10:$replytext = " Alarm PCL HIGH Temperature, PCH Temp = ";break;
-			case 11:$replytext = " Alarm PCH LOW Temperature, PCL Temp = ";break;
-			case 12:$replytext = " Alarm PCH HIGH Temperature, PCL Temp = ";break;
+			case 5:$replytext = " Alarm PCL LOW Pressure, PCL pressure = ";break;
+			case 6:$replytext = " Alarm PCL HIGH Pressure, PCL pressure = ";break;
+			case 7:$replytext = " Alarm PCH LOW Pressure, PCH pressure = ";break;
+			case 8:$replytext = " Alarm PCH HIGH Pressure, PCH pressure = ";break;
+			case 9:$replytext = " Alarm PCL LOW Temperature, PCL Temp = ";break;
+			case 10:$replytext = " Alarm PCL HIGH Temperature, PCL Temp = ";break;
+			case 11:$replytext = " Alarm PCH LOW Temperature, PCH Temp = ";break;
+			case 12:$replytext = " Alarm PCH HIGH Temperature, PCH Temp = ";break;
 			case 13:$replytext = " UPS Cleanroom Source Status change to > ";break;
 			case 14:$replytext = " UPS Utilities Source Status change to > ";break;
 		}
