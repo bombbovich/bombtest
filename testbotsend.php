@@ -59,8 +59,8 @@ function linesend($id,$replytext){
 	
 	$access_token = 'TNPzAFWAD9VBJjejExPpEjn00xmsDbOwuWrG8/QU0Rw+iAt0NvokuUlrNLYXrVcmb/zDCoAzwHgEWBWEJfDjDToHS7vu9KTnGuxeT/2yJHPKRO/1fy0RZjq3P4OBnegQ4vs9I/ztLSCa6ws/3ytFMwdB04t89/1O/w1cDnyilFU=';
 
-	$proxy = 'velodrome.usefixie.com:80';
-	$proxyauth = 'fixie:Sl341jGF275OLqY';
+	//$proxy = 'velodrome.usefixie.com:80';
+	//$proxyauth = 'fixie:Sl341jGF275OLqY';
 
 
 	$messages = [
