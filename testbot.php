@@ -7,8 +7,8 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 // Validate parsed JSON data
 
-$proxy = 'velodrome.usefixie.com:80';
-$proxyauth = 'fixie:Sl341jGF275OLqY';
+//$proxy = 'velodrome.usefixie.com:80';
+//$proxyauth = 'fixie:Sl341jGF275OLqY';
 
 $replytext = "";
 
