@@ -30,7 +30,7 @@ $proxyauth = 'fixie:Sl341jGF275OLqY';
 
  //   	$url = 'https://api.line.me/v2/bot/profile/' . $row['lineid'];
 
-		$url = 'https://api.line.me/v2/bot/group/U88a83e8c7488364a843a6301948f938d/member/U924d3eaf86d1bc9e757633949f9ba23e';
+		$url = 'https://api.line.me/v2/bot/group/C3e2fa8fdacd3da78912d3c7524a1d7a2/member/U924d3eaf86d1bc9e757633949f9ba23e';
 	echo $url;
 		
 		$headers = array('Authorization: Bearer ' . $access_token);
