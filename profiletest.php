@@ -20,15 +20,15 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully";
 
-$sql = "SELECT * FROM line_bot";
+$sql = "SELECT * FROM line_bot_history";
 $resultsql = $conn->query($sql);
 echo $resultsql->num_rows;
 if ($resultsql->num_rows > 0)
 {	echo "inloop";
 	while($row = $resultsql->fetch_assoc()) {
-    	$textread1 = "UserId = ".$row['lineid']." and Status is ".$row['status']. " :end ";
+    	$textread1 = "UserId = ".$row['userID']." and Status is ".$row['m_type']. " :end ";
 
-    	$url = 'https://api.line.me/v2/bot/profile/' . $row['lineid'];
+    	$url = 'https://api.line.me/v2/bot/profile/' . $row['userID'];
 
 	echo $url;
 		
