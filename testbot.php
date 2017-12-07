@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
 
 		$replyToken = $event['replyToken'];
 
-		$u_type = $event['sourec']['type'];
+		$u_type = $event['source']['type'];
 
 		if ($event['source']['userId'] != ""){
 			$userid = $event['source']['userId'];
