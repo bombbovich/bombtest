@@ -36,7 +36,11 @@ if (!is_null($events['events'])) {
 
 		$replyToken = $event['replyToken'];
 
-		$u_type = $event['source']['type'];
+		if ($event['source']['type'] != ""){
+			$u_type = $event['source']['type'];
+		}
+		else 
+			$u_type = "empty";
 
 		if ($event['source']['userId'] != ""){
 			$userid = $event['source']['userId'];
@@ -59,15 +63,23 @@ if (!is_null($events['events'])) {
 			$groupid = "empty";
 		}
 
-		$m_id = $event['message']['id'];
+		if ($event['smessage']['id'] != ""){
+			$m_id = $event['message']['id'];
+		}
+		else
+			$m_id = "empty";
 
 		if ($event['message']['type'] != ""){
 			$m_type = $event['message']['type'];
 		}
+		else
+			$m_type = "empty";
 
 		if ($event['message']['text'] != ""){
 			$text = $event['message']['text'];
 		}		
+		else
+			$text = "empty";
 		
 		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid')";
 		$resultsql = $conn->query($sql);		
@@ -78,7 +90,7 @@ if (!is_null($events['events'])) {
 		elseif ($text == "sql") $replytext = $test;
 			//elseif ($text == "v3") $replytext = "v3 test";
 			//elseif ($text == "สวัสดี") $replytext = "บ้าป่าว";
-			//elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
+			elseif ($text == "ขอโทษ") $replytext = "ไม่ให้อภัย";
 			//elseif ($text == "id") $replytext = $id;
 		elseif ($text == "facstatus"){
 				
