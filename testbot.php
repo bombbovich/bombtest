@@ -12,10 +12,17 @@ $proxyauth = 'fixie:Sl341jGF275OLqY';
 
 $replytext = "";
 
-$servername = "203.185.96.48";
-$username = "fees";
-$password = "tmecfees01";
-$dbname = "fees";
+//$servername = "203.185.96.48";
+//$username = "fees";
+//$password = "tmecfees01";
+//$dbname = "fees";
+
+//mysql://b9295cb943dec5:c9e4950e@us-cdbr-iron-east-05.cleardb.net/heroku_35876e5b2564558?reconnect=true
+
+$servername = "us-cdbr-iron-east-05.cleardb.net";
+$username = "b9295cb943dec5";
+$password = "c9e4950e";
+$dbname = "heroku_35876e5b2564558";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
