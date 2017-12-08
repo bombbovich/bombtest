@@ -64,10 +64,10 @@ if (!is_null($events['events'])) {
 		}
 		
 		if ($event['source']['roomId'] != ""){
-			$groupid = $event['source']['roomId'];
+			$roomid = $event['source']['roomId'];
 		}
 		else{
-			$groupid = "empty";
+			$roomid = "empty";
 		}
 
 		if ($event['message']['id'] != ""){
@@ -136,7 +136,7 @@ if (!is_null($events['events'])) {
 		else
 			$stickerid = "empty";
 		
-		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
+		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, roomID, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$roomid', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
 		$resultsql = $conn->query($sql);		
 
 			//	$id = $event['source']['userId'];
@@ -149,45 +149,45 @@ if (!is_null($events['events'])) {
 			//elseif ($text == "id") $replytext = $id;
 		elseif ($text == "facstatus"){
 				
-		$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
-		$resultsql = $conn->query($sql);
+			$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
+			$resultsql = $conn->query($sql);
 
-		if ($resultsql->num_rows > 0) {
+			if ($resultsql->num_rows > 0) {
     			// output data of each row
-    		while($row = $resultsql->fetch_assoc()) {
-        		$textread1 = "FACILITIES PRESSURE Measure \r\nเวลา: " . $row["time_p"]. " \r\nN2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar \r\nPCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
-    		}
-		} else {
-    		echo "0 results";
-		}
+    			while($row = $resultsql->fetch_assoc()) {
+        			$textread1 = "FACILITIES PRESSURE Measure \r\nเวลา: " . $row["time_p"]. " \r\nN2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar \r\nPCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
+    			}
+			} else {
+    			echo "0 results";
+			}
 
-		$sql = "SELECT * FROM fac_temp ORDER by time_t DESC LIMIT 1";
-		$resultsql = $conn->query($sql);
+			$sql = "SELECT * FROM fac_temp ORDER by time_t DESC LIMIT 1";
+			$resultsql = $conn->query($sql);
 
-		if ($resultsql->num_rows > 0) {
+			if ($resultsql->num_rows > 0) {
     			// output data of each row
-    		while($row = $resultsql->fetch_assoc()) {
-        		$textread2 = "FACILITIES Temperature Measure\r\nPCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
-    		}
-		} else {
-    		echo "0 results";
-		}
+    			while($row = $resultsql->fetch_assoc()) {
+        			$textread2 = "FACILITIES Temperature Measure\r\nPCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
+    			}
+			} else {
+    			echo "0 results";
+			}
 
-		$sql = "SELECT * FROM fac_th ORDER by time_th DESC LIMIT 1";
-		$resultsql = $conn->query($sql);
+			$sql = "SELECT * FROM fac_th ORDER by time_th DESC LIMIT 1";
+			$resultsql = $conn->query($sql);
 
-		if ($resultsql->num_rows > 0) {
-    			// output data of each row
-    		while($row = $resultsql->fetch_assoc()) {
-        		$textread3 = "FACILITIES CR Environment Measure\r\nTemp Class 100: " . $row["temp_100"]. " 'C\r\nHumidity Class 100: " . $row["humid_100"]. " %RH \r\nTemp Class 10K: " . $row["temp_10k"]. " 'C\r\nHumidity Class 10k: " . $row["humid_10k"]. " %RH";
-    		}
-		} else {
-    		echo "0 results";
-		}
+			if ($resultsql->num_rows > 0) {
+    				// output data of each row
+    			while($row = $resultsql->fetch_assoc()) {
+        			$textread3 = "FACILITIES CR Environment Measure\r\nTemp Class 100: " . $row["temp_100"]. " 'C\r\nHumidity Class 100: " . $row["humid_100"]. " %RH \r\nTemp Class 10K: " . $row["temp_10k"]. " 'C\r\nHumidity Class 10k: " . $row["humid_10k"]. " %RH";
+    			}
+			} else {
+    			echo "0 results";
+			}
 
 
 				//$replytext = $textread1;
-	}
+		}
 			//else $replytext = $text;
 			// Build message to reply back		
 	if ($text == "facstatus"){
