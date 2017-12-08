@@ -148,7 +148,7 @@ if (!is_null($events['events'])) {
 		else
 			$stickerid = "empty";
 		
-		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, roomID, orURL, piURL, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$roomid', '$orurl', '$piurl', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
+		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, roomID, orURL, piURL, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_time', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$roomid', '$orurl', '$piurl', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
 		$resultsql = $conn->query($sql);		
 
 			//	$id = $event['source']['userId'];
