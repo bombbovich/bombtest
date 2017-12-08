@@ -70,7 +70,7 @@ if (!is_null($events['events'])) {
 			$groupid = "empty";
 		}
 
-		if ($event['smessage']['id'] != ""){
+		if ($event['message']['id'] != ""){
 			$m_id = $event['message']['id'];
 		}
 		else
@@ -87,8 +87,56 @@ if (!is_null($events['events'])) {
 		}		
 		else
 			$text = "empty";
+
+		if ($event['message']['fileName'] != ""){
+			$filename = $event['message']['fileName'];
+		}		
+		else
+			$filename = "empty";
+
+		if ($event['message']['fileSize'] != ""){
+			$filesize = $event['message']['fileSize'];
+		}		
+		else
+			$filesize = "empty";
 		
-		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid')";
+		if ($event['message']['title'] != ""){
+			$title = $event['message']['title'];
+		}		
+		else
+			$title = "empty";
+		
+		if ($event['message']['address'] != ""){
+			$address = $event['message']['address'];
+		}		
+		else
+			$address = "empty";
+		
+		if ($event['message']['latitude'] != ""){
+			$latitude = $event['message']['latitude'];
+		}		
+		else
+			$latitude = "empty";
+		
+		if ($event['message']['longitude'] != ""){
+			$longitude = $event['message']['longitude'];
+		}		
+		else
+			$longitude = "empty";
+		
+		if ($event['message']['packageId'] != ""){
+			$packageid = $event['message']['packageId'];
+		}		
+		else
+			$packageid = "empty";
+
+		if ($event['message']['stickerId'] != ""){
+			$stickerid = $event['message']['stickerId'];
+		}		
+		else
+			$stickerid = "empty";
+		
+		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_type', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
 		$resultsql = $conn->query($sql);		
 
 			//	$id = $event['source']['userId'];
