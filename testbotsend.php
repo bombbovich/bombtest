@@ -52,6 +52,9 @@ if (isset($_GET)){
 	//linesend($id,$replytext);
 	$id = 'U01a6e0a158035b3447a19faf648821db';
 	linesend($id,$replytext);
+
+	$id = 'Cfe7e00a2ef082a3a295ae8c231152d47';
+	linesend($id,$replytext);
 }
 
 echo "Test Bot Send";
