@@ -17,19 +17,27 @@ $username = "fees";
 $password = "tmecfees01";
 $dbname = "fees";
 
-//mysql://b9295cb943dec5:c9e4950e@us-cdbr-iron-east-05.cleardb.net/heroku_35876e5b2564558?reconnect=true
-
-//$servername = "us-cdbr-iron-east-05.cleardb.net";
-//$username = "b9295cb943dec5";
-//$password = "c9e4950e";
-//$dbname = "heroku_35876e5b2564558";
-
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("UTF8");
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
+
+//mysql://b9295cb943dec5:c9e4950e@us-cdbr-iron-east-05.cleardb.net/heroku_35876e5b2564558?reconnect=true
+
+$servername = "us-cdbr-iron-east-05.cleardb.net";
+$username = "b9295cb943dec5";
+$password = "c9e4950e";
+$dbname = "heroku_35876e5b2564558";
+
+// Create connection
+$conn2 = new mysqli($servername, $username, $password, $dbname);
+$conn2->set_charset("UTF8");
+// Check connection
+if ($conn2->connect_error) {
+    die("Connection failed: " . $conn2->connect_error);
 } 
 echo "Connected successfully";
 
@@ -149,7 +157,7 @@ if (!is_null($events['events'])) {
 			$stickerid = "empty";
 		
 		$sql = "INSERT INTO line_bot_history (type, m_time, u_type, userID, m_ID, m_type, text, groupID, roomID, orURL, piURL, fileName, fileSize, title, address, latitude, longitude, packageID, stickerID) VALUES ('$type', '$m_time', '$u_type', '$userid', '$m_id', '$m_type', '$text', '$groupid', '$roomid', '$orurl', '$piurl', '$filename', '$filesize', '$title', '$address', '$latitude', '$longitude', '$packageid', '$stickerid')";
-		$resultsql = $conn->query($sql);		
+		$resultsql = $conn2->query($sql);		
 
 			//	$id = $event['source']['userId'];
 
