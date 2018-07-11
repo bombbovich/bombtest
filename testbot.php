@@ -11,19 +11,22 @@ $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:Sl341jGF275OLqY';
 
 $replytext = "";
+$textread1 = "1";
+$textread2 = "2";
+$textread3 = "3";
 
-$servername = "203.185.96.48";
-$username = "fees";
-$password = "tmecfees01";
-$dbname = "fees";
+//$servername = "203.185.96.48";
+//$username = "fees";
+//$password = "tmecfees01";
+//$dbname = "fees";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-$conn->set_charset("UTF8");
+//$conn = new mysqli($servername, $username, $password, $dbname);
+//$conn->set_charset("UTF8");
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-echo "Connected successfully";
+//if ($conn->connect_error) {
+  //  die("Connection failed: " . $conn->connect_error);
+//} 
+//echo "Connected successfully";
 
 //mysql://b9295cb943dec5:c9e4950e@us-cdbr-iron-east-05.cleardb.net/heroku_35876e5b2564558?reconnect=true
 
@@ -169,7 +172,7 @@ if (!is_null($events['events'])) {
 			//elseif ($text == "id") $replytext = $id;
 		elseif ($text == "facstatus"){
 				
-			$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
+			/*$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
 			$resultsql = $conn->query($sql);
 
 			if ($resultsql->num_rows > 0) {
@@ -204,6 +207,7 @@ if (!is_null($events['events'])) {
 			} else {
     			echo "0 results";
 			}
+			*/
 
 
 				//$replytext = $textread1;
