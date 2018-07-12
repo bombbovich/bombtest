@@ -178,7 +178,7 @@ if (!is_null($events['events'])) {
 			if ($resultsql->num_rows > 0) {
     			// output data of each row
     			while($row = $resultsql->fetch_assoc()) {
-        			$textread1 = "FACILITIES PRESSURE Measure \r\nเวลา: " . $row["time_p"]. " \r\nN2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar \r\nPCH: " . $row["PCH"]. " bar, PCL: " . $row["PCL"]. " bar";
+        			$textread1 = "FACILITIES PRESSURE Measure \r\nเวลา: " . $row["time_p"]. " \r\nN2: " . $row["n2"]. " bar, CDA: " . $row["cda"]. " bar \r\nPCH: " . $row["pch"]. " bar, PCL: " . $row["pcl"]. " bar";
     			}
 			} else {
     			echo "0 results";
@@ -190,7 +190,7 @@ if (!is_null($events['events'])) {
 			if ($resultsql->num_rows > 0) {
     			// output data of each row
     			while($row = $resultsql->fetch_assoc()) {
-        			$textread2 = "FACILITIES Temperature Measure\r\nPCH: " . $row["PCH"]. " 'C, PCL: " . $row["PCL"]. " 'C";
+        			$textread2 = "FACILITIES Temperature Measure\r\nPCH: " . $row["pch"]. " 'C, PCL: " . $row["pcl"]. " 'C";
     			}
 			} else {
     			echo "0 results";
