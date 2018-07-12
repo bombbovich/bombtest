@@ -172,7 +172,7 @@ if (!is_null($events['events'])) {
 			//elseif ($text == "id") $replytext = $id;
 		elseif ($text == "facstatus"){
 				
-			/*$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
+			$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
 			$resultsql = $conn->query($sql);
 
 			if ($resultsql->num_rows > 0) {
@@ -207,7 +207,7 @@ if (!is_null($events['events'])) {
 			} else {
     			echo "0 results";
 			}
-			*/
+			
 
 
 				//$replytext = $textread1;
