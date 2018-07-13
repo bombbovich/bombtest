@@ -173,7 +173,7 @@ if (!is_null($events['events'])) {
 		elseif ($text == "facstatus"){
 				
 			$sql = "SELECT * FROM fac_pressure ORDER by time_p DESC LIMIT 1";
-			$resultsql = $conn->query($sql);
+			$resultsql = $conn2->query($sql);
 
 			if ($resultsql->num_rows > 0) {
     			// output data of each row
@@ -185,7 +185,7 @@ if (!is_null($events['events'])) {
 			}
 
 			$sql = "SELECT * FROM fac_temp ORDER by time_t DESC LIMIT 1";
-			$resultsql = $conn->query($sql);
+			$resultsql = $conn2->query($sql);
 
 			if ($resultsql->num_rows > 0) {
     			// output data of each row
@@ -197,7 +197,7 @@ if (!is_null($events['events'])) {
 			}
 
 			$sql = "SELECT * FROM fac_th ORDER by time_th DESC LIMIT 1";
-			$resultsql = $conn->query($sql);
+			$resultsql = $conn2->query($sql);
 
 			if ($resultsql->num_rows > 0) {
     				// output data of each row
