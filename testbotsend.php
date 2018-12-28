@@ -44,12 +44,6 @@ if (isset($_GET)){
 		$replytext = $replytext . $_GET['data'];
 	}
 	echo $replytext;
-	
-	
-	
-	
-		
-		cho $replytext;
 
 	$id = 'U924d3eaf86d1bc9e757633949f9ba23e';//bombbovich
 	//$id = 'C3e2fa8fdacd3da78912d3c7524a1d7a2';//FEES Together
