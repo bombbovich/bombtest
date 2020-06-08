@@ -202,7 +202,7 @@ if (!is_null($events['events'])) {
 			if ($resultsql->num_rows > 0) {
     				// output data of each row
     			while($row = $resultsql->fetch_assoc()) {
-        			$textread3 = "FACILITIES CR Environment Measure\r\nTemp Class 100: " . $row["temp_100"]. " 'C\r\nHumidity Class 100: " . $row["humid_100"]. " %RH \r\nTemp Class 10K: " . $row["temp_10k"]. " 'C\r\nHumidity Class 10k: " . $row["humid_10k"]. " %RH";
+        			$textread3 = "FACILITIES Cleanroom Environment Measure\r\nTemp Class 100: " . $row["temp_100"]. " 'C\r\nHumidity Class 100: " . $row["humid_100"]. " %RH \r\nTemp Class 10K: " . $row["temp_10k"]. " 'C\r\nHumidity Class 10k: " . $row["humid_10k"]. " %RH";
     			}
 			} else {
     			echo "0 results";
